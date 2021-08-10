@@ -37,8 +37,8 @@ import (
 // GuestbookReconciler reconciles a Guestbook object
 type GuestbookReconciler struct {
 	client.Client
-	Log    logr.Logger
-	Scheme *runtime.Scheme
+	Log      logr.Logger
+	Scheme   *runtime.Scheme
 	Recorder record.EventRecorder
 }
 
@@ -76,7 +76,6 @@ func (r *GuestbookReconciler) Reconcile(req ctrl.Request) (ctrl.Result, error) {
 		log.Error(err, "unable to list child Pods")
 		return ctrl.Result{}, err
 	}
-	//
 
 	//判断pod数量是否和replicas相同
 	realityReplicas := len(podList.Items)
@@ -159,7 +158,7 @@ func (r *GuestbookReconciler) deleteExternalResources(ctx context.Context, guest
 	pod := &corev1.Pod{}
 	if err := r.DeleteAllOf(ctx, pod, client.InNamespace(guestbook.Namespace),
 		client.MatchingLabels{"app": guestbook.Spec.Selector.MatchLabels["app"]}); err != nil {
-		r.Log.Error(err,"删除guestbook关联pod失败")
+		r.Log.Error(err, "删除guestbook关联pod失败")
 		return err
 	}
 	return nil
