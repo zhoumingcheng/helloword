@@ -131,8 +131,8 @@ type ContainerPort struct {
 type GuestbookStatus struct {
 	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
-	Status v1.DeploymentStatus `json:"status"`
-	AvailableReplicas int           `json:"availableReplicas"` //当前实际的副本数
+	Status            v1.DeploymentStatus `json:"status"`
+	AvailableReplicas int                 `json:"availableReplicas"` //当前实际的副本数
 }
 
 // +kubebuilder:object:root=true
@@ -142,6 +142,7 @@ type Guestbook struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 
+	//spec
 	Spec   GuestbookSpec   `json:"spec,omitempty"`
 	Status GuestbookStatus `json:"status,omitempty"`
 }
