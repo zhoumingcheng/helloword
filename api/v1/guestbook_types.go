@@ -142,7 +142,7 @@ type Guestbook struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 
-	//dev 该了啊 laile
+	//dev 该了啊 laile enen
 	Spec   GuestbookSpec   `json:"spec,omitempty"`
 	Status GuestbookStatus `json:"status,omitempty"`
 }
